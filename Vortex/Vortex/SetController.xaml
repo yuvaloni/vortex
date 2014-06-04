@@ -1,0 +1,70 @@
+﻿<Window x:Class="Vortex.SetController"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="SetController" Height="300" Width="600" Background="Black">
+     <Window.Resources>
+          <Style TargetType="{x:Type TreeViewItem}">
+               <Setter Property="Foreground" Value="White"/>
+               <Setter Property="BorderThickness" Value="1"/>
+               <Style.Triggers>
+                    <Trigger Property="IsSelected" Value="True">
+                         <Setter Property="Background" Value="White"/>
+                         <Setter Property="Foreground" Value="Black"/>
+                    </Trigger>
+
+               </Style.Triggers>
+               <Style.Resources>
+                    <Style TargetType="Border">
+                         <Setter Property="CornerRadius" Value="2"/>
+                    </Style>
+                    <SolidColorBrush Color="White" x:Key="{x:Static SystemColors.HighlightBrushKey}"/>
+               </Style.Resources>
+          </Style>
+          <Style TargetType="{x:Type Button}">
+               <Setter Property="Background" Value="Black"/>
+               <Setter Property="Foreground" Value="White"/>
+               <Setter Property="Template">
+                    <Setter.Value>
+                         <ControlTemplate TargetType="Button">
+                              <Border CornerRadius="0" BorderBrush="White" BorderThickness="3"  >
+                                   <ContentPresenter x:Name="contentPresenter" ContentTemplate="{TemplateBinding ContentTemplate}" Content="{TemplateBinding Content}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                              </Border>
+                         </ControlTemplate>
+                    </Setter.Value>
+               </Setter>
+               <Style.Triggers>
+                    <Trigger Property="IsMouseOver" Value="True">
+                         <Setter Property="Template">
+                         <Setter.Value>
+                              <ControlTemplate TargetType="Button">
+                                   <Border CornerRadius="0" BorderBrush="White" BorderThickness="3" Background="Magenta" >
+                                        <ContentPresenter x:Name="contentPresenter" ContentTemplate="{TemplateBinding ContentTemplate}" Content="{TemplateBinding Content}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                                   </Border>
+                              </ControlTemplate>
+                         </Setter.Value>
+                         </Setter>
+                    </Trigger>
+                    <Trigger Property="Button.IsPressed" Value="True">
+                         <Setter Property="Template">
+                              <Setter.Value>
+                                   <ControlTemplate TargetType="Button">
+                                        <Border CornerRadius="0" BorderBrush="White" BorderThickness="3" Background="Purple" >
+                                             <ContentPresenter x:Name="contentPresenter" ContentTemplate="{TemplateBinding ContentTemplate}" Content="{TemplateBinding Content}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                                        </Border>
+                                   </ControlTemplate>
+                              </Setter.Value>
+                         </Setter>
+                    </Trigger>
+               </Style.Triggers>
+          </Style>
+     </Window.Resources>
+     <Canvas>
+          <TreeView Height="209" Canvas.Left="10" Canvas.Top="10" Width="572" Name="devices" Background="Black" BorderBrush="White" BorderThickness="5" Foreground="White">
+
+          </TreeView>
+          <Button Content="SET" Canvas.Left="10" Canvas.Top="234" Width="75" Click="Button_Click" />
+          <Button Content="Cancel" Canvas.Left="507" Canvas.Top="234" Width="75" Click="Button_Click_1" />
+
+
+     </Canvas>
+</Window>
